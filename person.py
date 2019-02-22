@@ -1,19 +1,19 @@
 class person:
-    def __init__(self,person_name,role,housing):
+    def __init__(self,person_name,role=None,accomodation = "N"):
         self.person_name = person_name
         self.role = role
-        self.housing = housing
+        self.accomodation = accomodation
 
 class staff(person):
     def __init__(self,person_name):
         self.person_name = person_name
         self.role = "staff"
-        self.housing = False  
+        self.accomodation = "N"  
 
 class fellow(person):
     def __init__(self,person_name):
         self.person_name = person_name
         self.role = "fellow"
-        self.housing = True
+        self.accomodation = True
 
     

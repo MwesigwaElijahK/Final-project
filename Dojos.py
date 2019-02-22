@@ -1,43 +1,52 @@
 from rooms import *
 from person import *
+import random
 
 class Dojo:
     def __init__(self):
-        self.totalRooms = []
-        self.totalOffices = []
-        self.living_spaces = []
+        self.total_rooms = []
+        self.total_offices = []
+        self.total_living_space = []
         self.total_persons = []
         self.staff_persons = []
         self.fellow_persons = []
-        self.unllocated_rooms = []
-        self.allocated_rooms = []
+        self.allocated = []
+        self.unllocated = []
+        self.unllocated_offices = []
+        self.unllocated_living_space = []
+        
+    def create_room(self,room_name,room_type):
+        if room_type == "office":
+            new_room = office(room_name)
+            self.total_rooms.append(new_room)
+            self.total_offices.append(new_room)
+            print("Office " + room_name  + " is created")
 
+        elif room_type == "living_space":
+            new_room = _space(room_name)
+            self.total_rooms.append(new_room)
+            self.living_spaces.append(new_room)
+            print("living_space " + room_name  + " is created")
 
-def createRoom(self,room_name,room_type):
-    if room_type == "office":
-        newRoom = office(room_name)
-        self.totalRooms.append(newRoom)
-        self.totalOffices.append(newRoom)
+        else:
+            return ("invalid room type. Only have office and livingSpace")
 
-    elif room_type == "livingSpace":
-        newRoom = _space(room_name)
-        self.totalRooms.append(newRoom)
-        self.living_spaces.append(newRoom)
+    def person_added(self,person_name,role,accomodation):
+        if role == "staff":
+            new_person = staff(person_name)
+            self.total_persons.append(new_person)
+            self.staff_persons.append(new_person)
+            self.room_assign(new_person,accomodation=accomodation)
 
-    else:
-        return ("invalid room type. Only have office and livingSpace")
+        elif role == "fellow":
+            new_person = fellow(person_name=person_name,accomodation=accomodation)
+            self.total_persons.append(new_person)
+            self.fellow_persons.append(new_person)
+            self.room_assign(new_person,accomodation=accomodation)
 
-def personAdded(self,person_name,role,housing):
-    if role == "staff":
-        newPerson = staff(person_name)
-        self.total_persons.append(newPerson)
-        self.staff_persons.append(newPerson)
+        else:
+            return "There is no other role apart from staff and fellow"    
 
-    elif role == "fellow":
-        newPerson = fellow(person_name=person_name,housing=housing)
-        self.total_persons.append(newPerson)
-        self.fellow_persons.append(newPerson)
-    else:
-        return "There is no other role apart from staff and fellow"    
-
-def assignRooms(self,person,housing):
+def room_assign(self,person,accomodation):
+    
+           
